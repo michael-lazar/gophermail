@@ -1,0 +1,1410 @@
+        +--------------------------------------------------+
+        |          Accessing The Internet By Email         |
+        |         Guide to Offline Internet Access         |
+        |            Version 8.4 - September 1999          |
+        +--------------------------------------------------+
+
+                Copyright (c) 1999, Gerald E. Boyd
+                         gboyd@netcom.com
+
+      All rights reserved. Permission is granted to duplicate and
+      distribute copies of this document provided the copyright
+      notice and this permission notice are preserved on all copies.
+
+
+A Brief History
+---------------
+
+Accessing The Internet By Email or originally known as "Doctor Bob's
+Guide to Offline Internet Access" was the brainchild of Bob Rankin (a
+great net guy) who started it up in 1994.  He kept it up about 5 years
+before passing it to me in January 1999, when it became apparent he was
+too busy with other projects (Internet Tourbus, writing, etc.) to
+continue maintaining it.
+
+In October 1997 I had taken over the moderator duties of the ACCMAIL
+mailing list (which is used to further develop ideas expressed in this
+FAQ) and started a web page based on this FAQ. I guess he figured I was
+the logical person to take over the FAQ. Hmmm!
+
+So there you go.
+
+
+How to Access Internet Services by Email
+-----------------------------------------
+
+If you don't have direct access to the Internet through your BBS or
+online service, you're not alone.  Many of the world's countries with
+Internet connections have only email access to this world-wide network
+of networks.
+
+But if you think that sounds limiting, read on.  You can access almost
+any Internet resource using email.   Maybe you've heard of FTP, Gopher,
+Archie, Veronica, Finger, Usenet, Whois, Netfind, WAIS, and the
+World-Wide Web but thought they were out of your reach because you don't
+have a direct connection.
+
+Not so!  You can use simple email commands to do all of this and much
+more on the Internet.  And even if you do have full Internet access,
+using email services can save you time and money.   If you can send a
+note to an Internet address, you're in the game.
+
+I encourage you to read this entire document first and then go back and
+try out the techniques that are covered.  This way, you will gain a
+broader perspective of the information resources that are available, an
+introduction to the tools you can work with, and the best methods for
+finding the information you want.
+
+
+Recent Changes To This Document
+-------------------------------
+
+8.4 WORLD NEWS REVIEW at inbox@netserve.FT.com DEFUNCT as of 15Jun99,
+    STOCK MARKET QUOTES at services@quote.com DEFUNCT as of 23Jun99
+    added another method using Agora like commands.
+
+    Added ASK-A-TECH, revised CURRENCY CONVERSION, revised FINANCIAL
+    AID FAQ, Added MEDICAL INFORMATION BY EMAIL, Added LANGUAGE
+    TRANSLATION BY EMAIL, added GENE SPLICING, added STATLIB
+8.3 New foreign language versions, new address for BABEL, update
+    ANONYMOUS EMAIL section, Veronica by email DEFUNCT, Revised Archie
+    servers, revised ftpmail servers, revised USENET by Email, STOCK
+    MARKET QUOTE section updated.
+
+
+Finding the Latest Version
+--------------------------
+
+This document is now available from several automated mail servers.
+To get the latest edition, send email to one of the addresses below.
+
+To: mail-server@rtfm.mit.edu (for US, Canada & South America)
+Enter only this line in the BODY of the note:
+   send usenet/news.answers/internet-services/access-via-email
+
+To: mailbase@mailbase.ac.uk (for Europe, Asia, etc.)
+Enter only this line in the BODY of the note:
+   send lis-iis e-access-inet.txt
+
+To: gboyd@netcom.com
+Subject: send accmail.faq
+
+You can also get the file by anonymous FTP at one of these sites:
+
+Site: rtfm.mit.edu
+   get pub/usenet/news.answers/internet-services/access-via-email
+Site: ftp.mailbase.ac.uk
+   get pub/lists/lis-iis/files/e-access-inet.txt
+
+Or on the Web in HTML format at:
+  
+http://www.cis.ohio-state.edu/hypertext/faq/usenet/internet-services/access
+-via-email/faq.html
+
+
+Before You Write...
+-------------------
+
+Please make sure you have the latest version of this guide before
+writing to the author with questions and updates.  Don't give up too
+quickly on the busy email servers, and if you get an error message, try
+your request again on a different day or time.  If you'd like to keep up
+with the latest updates and announcements of new versions, send the
+command:
+
+   SUBSCRIBE ACCMAIL Firstname Lastname
+
+in the BODY of a message to the address "LISTSERV@LISTSERV.AOL.COM".  In
+fact, the ACCMAIL list is a great place to ask any questions you have
+about this guide.  You're likely to get a quicker response from one of
+the list subscribers, because the author gets several hundred messages
+per day!
+
+
+Other Translations of This Document
+-----------------------------------
+
+Several readers have graciously volunteered to translate this text into
+languages other than English.  Please contact the author if you would
+like to assist in the translation of this document into another
+language.  The list below shows the status of the translation work that
+has been done or is in progress.  To obtain any of the completed texts,
+send email
+
+To: gboyd@netcom.com
+Subject: send accmail.xx             (where "xx" is as shown below)
+
+ Translation             Filename     Translation             Filename
+
+ ----------------------- ----------   ----------------------- ----------
+ Bulgarian (7th Ed.)     accmail.bg   Italian (8th Ed.)       accmail.it
+ Catalan (5th Ed.)       accmail.ca   Japanese (6th Ed.)      accmail.jp
+ Chinese BIG5 (5th Ed.)  accmail.tw   Lithuanian (6th Ed.)    accmail.lt
+ Chinese GB (8th Ed.)    accmail.gb   Norwegian (4th Ed.)     accmail.no
+ Croatian (4th Ed.)      accmail.hr   Polish (4th Ed.)        accmail.pl
+ Czech (6th Ed.)         accmail.cz   Portuguese (6th Ed.)    accmail.pt
+ Danish (5th Ed.)        accmail.dk   Romanian (6th Ed.)      accmail.ro
+ Dutch (8th Ed.)         accmail.nl   Russian (8th Ed.)       accmail.ru
+ Esperanto (5th Ed.)     accmail.eo   Serbian (6th Ed.)       accmail.sr
+ Farsi (8th Ed.)         accmail.ir   Slovak (6th Ed.)        accmail.sk
+ Finnish (6th Ed.)       accmail.fi   Somali (5th Ed.)        accmail.so
+ French (6th Ed.)        accmail.fr   Spanish  (8th Ed.)      accmail.sp
+ German (8th Ed.)        accmail.de   Thai (6th Ed.)          accmail.th
+ Greek (6th Ed.)         accmail.gr   Ukranian (6th Ed.)      accmail.ua
+ Hebrew (5th Ed.)        accmail.he   Urdu (8th Ed.)          accmail.pk
+ Hungarian (8th Ed.)     accmail.hu   Vietnamese (7th Ed.)    accmail.vn
+ Indonesian (8th Ed.)    accmail.id
+
+NOTE: Your "send accmail.xx" request MUST be in the SUBJECT line!
+
+
+Acknowledgements
+----------------
+
+This document is continually expanding and improving as a result of the
+daily flood of comments and questions received by the author.  The
+following individuals are hereby recognized for their work in
+translating "Accessing" to various languages.  (If I forgot anyone, let
+me know and I'll gladly add you to the list.)
+
+   Bulgarian - Kolcho Kovachev          Indonesian - Yohanes Nugroho
+   Catalan - Ricard Forner              Italian - cromatis@ecn.org
+   Chinese Big5 - Ju-En Teng            Japanese - Komatsu Toshiki
+   Chinese GB - Li Ying                 Lithuanian - Darius Matuliauskas
+   Croatian - Zvonko Springer           Norwegian - Vidar Sarvik
+   Croatian - Nikola Borojevic          Polish - Ewa Poskrobko
+   Czech - Martin Slunecko              Polish - Krzysztof Buniewicz
+   Danish - Christian Schou             Portuguese - Joao Neves
+   Dutch - Berry Van Hombeeck           Romanian - Mihai Jalobeanu
+   Esperanto - Martin Weichert          Russian - Alexander Ilyin
+   Farsi - Mansour Dehestani Monfared   Serbian - Brankica Kranjac
+   Farsi - Zahra Sheik                  Serbian - Ivan Stamenkovic
+   Finnish - Paavo Juntunen             Slovakian - Stanislav Ponca
+   French - Pierre Couillard            Somali - Yassin Ismail Ali
+   German - Marc Loehrwald              Spanish - Bellanet Org
+   Greek - Grigoris Miliaresis          Thai - Boonyakiat Saengwan
+   Hebrew - Ron Barak                   Ukranian - Dmitry V. Bisikalo
+   Hungarian - Lajos Toldy              Urdu - M. Shahid Khaki
+
+
+A Short Aside... "What is the Internet?"
+----------------------------------------
+
+Many introductory texts on the Internet go into excruciating detail on
+the history, composition and protocol of the Internet.  If you were
+looking for that you won't find it here, because this is a "how to"
+lesson, not a history book.
+
+When you buy a new car, they don't make you read "The Life and Times of
+Henry Ford" before you can turn the top down and squeal off the lot.
+And when you get a new computer, nobody forces you to read a text on
+logic design before you fire up Leisure Suit Larry or WordPerfect.
+
+So if you're the type that wants to short-circuit the preliminaries and
+just dig in, you've come to the right place.  I'm not going to bore you
+with the gory details.  Instead, I'll just offer up my Reader's Digest
+condensed definition of the Internet, and encourage you to find out more
+as you gain skill at using the tools described herein.
+
+
+Internet (noun) - A sprawling collection of computer networks that spans
+the globe, connecting government, military, educational and commercial
+institutions, as well as private citizens to a wide range of computer
+services, resources, and information.  A set of network conventions and
+common tools are employed to give the appearance of a single large
+network, even though the computers that are linked together use many
+different hardware and software platforms.
+
+
+The Rules of The Game
+---------------------
+
+This document is meant to be both tutorial and practical, so there are
+lots of actual commands and internet addresses listed herein.  You'll
+notice that when these are included in the text they are indented by
+several spaces for clarity.  Don't include the leading spaces when you
+try these commands on your own!
+
+You'll also see things like "" or "" appearing in this
+document.  Think of these as place holders or variables which must be
+replaced with an appropriate value.  Do NOT include the quotes or
+brackets in your value unless specifically directed to do so.
+
+Most email servers understand only a small set of commands and are not
+very forgiving if you deviate from what they expect.  So include ONLY
+the specified commands in the Subject or body of your note, leaving off
+any extraneous lines such as your signature, etc.
+
+Unless otherwise specified, you can leave the Subject and/or body of the
+note empty.  If your mail software insists on a Subject or body, just
+type "XYZZY" or something equally non-sensical.
+
+You should also ensure that you have one blank line between the note
+headers and the body of your note.  And do pay attention to upper/lower
+case in directory and file names when using email servers.   It's almost
+always important.
+
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+SPECIAL NOTE:  The email servers listed in this guide are for the most
+part operated by kind-hearted volunteers at companies or universities.
+If you abuse (or over-use) the servers, there's a very good chance they
+will be shut down permanently.  This actually happened to several of the
+email servers recently, so treat them with respect.
+
+If you have direct Internet access, let others who are less fortunate
+use the email servers.   Try to limit your data transfers to one
+megabyte per day.  Don't swamp the servers with many requests at a
+time.
+*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+
+
+                           FTP BY EMAIL
+                           -------------
+
+FTP stands for "file transfer protocol", and is a means of accessing
+files that are stored on remote computer systems (sites). Files at FTP
+sites are typically stored in a tree-like set of directories (or nested
+folders for Mac fans), each of which pertains to a different subject.
+
+When visiting an FTP site using a "live" internet connection, one would
+specify the name of the site, login with a userid & password, navigate
+to the desired directory and select one or more files to be transferred
+back to their local system.
+
+Using FTP by email is very similar, except that the desired site is
+reached through a special "ftpmail server" which logs in to the remote
+site and returns the requested files to you in response to a set of
+commands in an email message.
+
+
+Using FTP by email can be nice even for those with full Internet
+access, because some popular FTP sites are heavily loaded and
+interactive response can be very sluggish.  So it makes sense not to
+waste time and connect charges in these cases.
+
+To use FTP by email, you first need a list of FTP "sites" which are the
+addresses of the remote computer systems that allow you to retrieve
+files anonymously (without having a userid and password on that
+system).
+
+There are some popular sites listed later in this guide, but you can get
+a comprehensive list of hundreds of anonymous FTP sites by sending an
+email message to the internet address:
+
+  mail-server@rtfm.mit.edu
+
+and include these lines in the BODY of the note.
+
+   send usenet/news.answers/ftp-list/sitelist/part1
+   ... (21 lines omitted for brevity) ...
+   send usenet/news.answers/ftp-list/sitelist/part23
+
+You will then receive (by email) 23 files which comprise the "FTP Site
+List".  Note that these files are each about 60K, so the whole lot will
+total over a megabyte!  This could place a strain on your system, so
+first check around to see if the list is already available locally.
+
+Another file you might want to get is "FTP Frequently Asked Questions"
+which contains lots more info on using FTP services, so add this line to
+your note as well:
+
+   send usenet/news.answers/ftp-list/faq
+
+After you receive the site list you'll see dozens of entries like this,
+which tell you the site name, location and the kind of files that are
+stored there.
+
+   Site   : oak.oakland.edu
+   Country: USA
+   GMT    : -5
+   Date   : 23-Jul-95
+   Source : old ftp-list
+   Alias  : oak; rigel.acs.oakland.edu
+   Admin  : admin@vela.acs.oakland.edu
+   Organ  : Oakland University, Rochester, Michigan, Academic Computing
+            Services
+   Server : gopher://gopher.oakland.edu/ http://www.acs.oakland.edu/
+   System : Unix
+   URL    : ftp://oak.oakland.edu/
+   Comment: simtel mirror (of ftp.simtel.net); max. 400 users
+   Files  : BBS lists; ham radio; ka9q TCP/IP; Mac; modem protocol info;
+             MS-DOS; MS-Windows; PC Blue; PostScript; simtel; Unix
+
+If you find an interesting FTP site in the list, send email to one of
+these ftpmail servers:
+
+   bitftp@plearn.edu.pl           (Poland) - No UUCP gateways
+   bitftp@pucc.princeton.edu      (United States) - OK UUCP gateways
+   ftpmail@academ.com             (United States) added 16Aug99
+   ftpmail@btoy1.rochester.ny.us  (United States)
+   ftpmail@cnd.caravan.ru         (Russia - added 11Apr99) - SLOW
+   ftpmail@dna.affrc.go.jp        (Japan)
+   ftpmail@ftp.sunet.se           (Sweden)
+   ftpmail@ftp.uni-stuttgart.de   (Germany)
+   ftpmail@garbo.uwasa.fi         (Finland) NO ANSWER 04, 07Jun99
+   ftpmail@giswitch.sggw.waw.pl   (Poland)
+   ftpmail@mail.iif.hu            (Hungary)
+   ftpmail@mercure.umh.ac.be      (Belgium)
+   ftpmail@uar.net                (Ukraine)
+
+
+Note: There are other restricted-use FTPMAIL servers listed at
+      http://www.geocities.com/CapitolHill/1236/servers.html
+      See the "WWW By Email" section for help retrieving this file.
+
+It doesn't really matter which one you choose, but a server that is
+geographically close may respond quicker.  (Please DON'T use the first
+one in the list just because it's there!)  In the body of the note,
+include these lines:
+
+   open 
+   dir
+   quit
+
+This will return to you a list of the files stored in the root directory
+at that site.  See the figure below for an example of the output when
+using "oak.oakland.edu" for the site name.
+
+ +---------------------------------------------------------------------+
+   -rw-r--r--   1 ftpuser  ftpusers   1498680 Jun  2 03:19 Index-byname
+   -r--r--r--   1 ftpuser  ftpusers      1386 Mar 22  1996 README
+   -rw-r--r--   1 ftpuser  ftpusers  91042651 Feb  6 03:13 access
+   -rw-r--r--   1 ftpuser  ftpusers  61464576 Feb  6 03:12 errors
+   drwx--x--x   4 ftpuser  ftpusers      8192 Apr  6  1998 etc
+   lrwxrwxrwx   1 ftpuser  ftpusers         7 Apr  6  1998 irc -> pub/irc
+   drwxr-xr-x  23 ftpuser  ftpusers      8192 Apr  6  1998 pub
+   -rw-r-----   1 ftpuser  ftpusers    327680 Apr  6  1998 quota.group
+   -rw-r-----   1 ftpuser  ftpusers    835584 Apr  6  1998 quota.user
+   drwx------  50 ftpuser  ftpusers      8192 May 27 03:30 w8sdz
+ +---------------------------------------------------------------------+
+
+In your next email message you can navigate to other directories by
+inserting (for example)
+
+   chdir pub                        (use "cd" if "chdir" doesn't work)
+
+before the "dir" command.  (The "chdir" means "change directory" and
+"pub" is a common directory name, usually a good place to start.) Once
+you determine the name of a file you want to retrieve, use:
+
+   get 
+
+in the following note instead of the "dir" command.  If the file you
+want to retrieve is plain text, this will suffice.  If it's a binary
+file (an executable program, compressed file, etc.) you'll need to
+insert the command:
+
+   binary
+
+in your note before the "get" command.
+
+Tip:  Many directories at FTP sites contain a file called 00-index.txt,
+README, or something similarly named which gives a description of the
+files found there.  If you're just exploring and your "dir" reveals one
+of these filenames, do a "get" on the file and save yourself some time.
+
+OK, let's grab the text of The Magna Carta.  Here's the message you send
+to an ftpmail server:
+
+   open ftp.cs.strath.ac.uk         (The name of the FTP site)
+   chdir local/gw                   (The directory where the file lives)
+   get magna.txt                    (Sign here please, John)
+   quit                             (Bring it on home)
+
+Here are the commands you would send to to get a file from the Simtel
+Software Repository that was mentioned earlier.
+
+   open oak.oakland.edu             (mirrored at ftp.simtel.net)
+   cd pub/simtelnet/msdos/disasm/
+   binary                           (Because we're getting a ZIP file)
+
+   get bubble.zip
+   quit
+
+Some other interesting FTP sites you may want to "visit" are listed
+below.  (Use these site names on the "open" command and the suggested
+directory name on your "chdir" command, as in the previous examples.)
+
+   rtfm.mit.edu        Try: pub/usenet/news.answers for USENET info
+   ftp.simtel.net      Try: pub/simtelnet a huge DOS/WIN software library
+   gatekeeper.dec.com  Try: pub/recipes for a cooking & recipe archive
+
+Remember that you can't just send email to ftpmail@, rather
+you send the "open " command to one of the known ftpmail servers.
+
+Notes:
+- The ftpmail servers tend to be quite busy. Your reply may not arrive
+  for several minutes, hours, or days.
+- Some large files may be split into smaller pieces and returned to you
+  as multiple messages.  You can control this (and also override the
+  return email address) using special ftpmail commands.
+- The commands are not the same on every server - send the "help"
+  command to find out how FTPMAIL works on the server you are using!
+- Often the ftpmail servers keep local archives. Open the local archives
+  by not specifying a site on the "open" line. Using the local archives
+  gives your request priority so it will be processed before all outside
+  requests.
+
+If the file that is returned to you ends up looking something like what
+you see below, (the word "begin" with a number and the filename on one
+line, followed by a bunch of 61-character lines) it most likely is a
+binary file that has been "uuencoded" by the sender.  (This is required
+in order to reliably transmit binary files by email.)
+
+    begin 666 answer2.zip
+    M4$L#!`H`!@`.`/6H?18.$-Z$F@P```@?```,````5$5,25@S,34N5%A480I[
+    M!P8;!KL,2P,)!PL).PD'%@.(!@4.!P8%-@.6%PL*!@@*.P4.%00.%P4*.`4.
+
+You'll need to scrounge up a version of the "uudecode" program for your
+operating system (DOS, OS/2, Unix, Mac, etc.) in order to reconstruct
+the file.  Most likely you'll find a copy already at your site or in
+your service provider's download library, but if not you can use the
+instructions in the next section to find out how to search FTP sites for
+a copy.
+
+
+                            ARCHIE BY EMAIL
+                            ----------------
+
+Let's say you know the name of a file, but you have no idea at which FTP
+site it might be lurking.  Or maybe you're curious to know if files
+matching a certain naming criteria are available via FTP.  Archie is the
+tool you can use to find out.
+
+Archie servers can be thought of as a database of all the anonymous FTP
+sites in the world, allowing you to find the site and/or name of a file
+to be retrieved.  And using Archie by email can be convenient because
+some Archie searches take a LONG time to complete, leaving you to tap
+your toes in the meantime.
+
+To use Archie by email, simply send an email message to one of the
+following addresses (use the closest one):
+
+   archie@archie.sogang.ac.kr         Korea
+   archie@archie.th-darmstadt.de      Germany
+
+To obtain detailed help for using Archie by mail, put the word
+
+   help
+
+
+in the subject of the note and just send it off.  You'll receive email
+explaining how to use archie services.  If you're the "just do it" type,
+then enter the command:
+
+   find 
+
+where "" is the name of the file to search for, in the BODY (not
+the subject) of the note. This will search for files that match your
+criteria exactly.  If you want to find files that contain your search
+criteria anywhere in their name, insert the line
+
+   set search sub
+
+before the "find" command.  Some other useful archie commands you might
+want to use are:
+
+   set maxhits 20             (limit output, default is 100 files)
+   set match_domain usa       (restrict output to FTP sites in USA)
+   set output_format terse    (return output in condensed form)
+
+When you get the results from your Archie query, it will contain the
+names of various sites at which the desired file is located.  Use one of
+these site names and the directory/filename listed for your next FTP
+file retrieval request.
+
+Now you've learned enough to locate that UUDECODE utility mentioned in
+the last section.  Let's send email to archie@archie.bunyip.com (or
+one of the other archie servers), and include the following lines in the
+message:
+
+   set match_domain usa
+   set search sub             (looking for a substring match...)
+   find uudecode              (must contain this string...)
+
+Note: You'll be looking for the uudecode source code, not the executable
+version, which would of course be a binary file and would arrive
+uuencoded - a Catch 22!  The output of your archie query will contain
+lots of information like this:
+
+   Host ftp.clarkson.edu    (128.153.4.2)
+   Last updated 06:31  9 Oct 1994
+
+   Location: /pub/simtel20-cdrom/msdos/starter
+   FILE    -r-xr-xr-x    5572 bytes  21:00 11 Mar 1991  uudecode.bas
+
+   Location: /pub/simtel20-cdrom/msdos/starter
+   FILE    -r-xr-xr-x    5349 bytes  20:00 17 Apr 1991  uudecode.c
+
+Now you can use an ftpmail server to request "uudecode.bas" (if you have
+BASIC available) or "uudecode.c" (if you have a C compiler) from the
+ftp.clarkson.edu site.
+
+It should be noted that the latest version of uudecode can be found at
+the SimTel repository.  Send email to listserv@SimTel.net, including
+any or all of these commands in the BODY of the note, and the requested
+files will be returned to you by email.
+
+   get uudecode.bas
+   get uudecode.c
+   get uudecode.doc
+
+SPECIAL NOTE:  For DOS users, there is an EXECUTABLE ASCII version of
+the UUDECODE.COM program available.  This is a rare exception to the
+rule that executable files must be encoded to survive email
+transmission.  You can receive it via email and execute it "as is".   To
+get a copy, send email to gboyd@netcom.com with Subject: send
+uudecode.com  (must be lowercase).  For further info on using uudecode,
+request the "uudecode.how" file.
+
+
+
+                            GOPHER BY EMAIL
+                            ----------------
+
+Gopher is a tool for exploring the Internet and is one way to find a
+resource if you know what you want, but not where to find it.  Gopher
+systems are menu-based, and provide a user-friendly front end to
+Internet resources, searches and information retrieval.
+
+When visiting a Gopher site using a "live" Internet connection, one
+would specify the name of the site, navigate through a series of
+hierarchical menus to a desired resource, and then either read or
+transfer the information back to their home system.
+
+Using Gopher by email is very similar, except that the desired site is
+reached through a special "gophermail server" which gophers to the
+remote site on your behalf and and returns the requested menu, submenu
+or file to you in response to a set of commands in an email message.
+
+NOTE: In recent years, Gopher has fallen in popularity and most of the
+  gophermail servers have closed down.  But still there is quite a
+  bit of information available on gopher servers, and a few working
+  gophermail servers.
+
+Although not every item on every menu will be accessible by
+"gophermail", you'll still find plenty of interesting things using this
+technique.  Down to brass tacks...  let's send email to one of these
+addresses:
+
+   gopher@dna.affrc.go.jp          Japan
+   gopher@ncc.go.jp                Japan
+
+You can optionally specify the address of a known gopher site on the
+Subject line to get the main menu for that site instead.  Here are some
+interesting gopher sites you may like to explore at your leisure.
+
+   cwis.usc.edu                    (closed down Jan99 but usable)
+   gopher.micro.umn.edu
+
+Let's be bold and skip the HELP stuff for now.  Fire off a note to one
+of the gophermail servers and specify
+
+   Subject: cwis.usc.edu
+
+You'll get a message back from the server that looks something like the
+text in the figure below.
+
+ +--------------------------------------------------------------------+
+   Mail this file back to gopher with an X before the items you want.
+
+         1.  About USCgopher/
+         2.  How To Find Things on Gopher/
+         3.  University Information/
+         4.  Campus Life/
+         5.  Computing Information/
+         6.  Library and Research Information/
+         7.  Health Sciences/
+         8.  Research and Technology Centers/
+         9.  Other Gophers and Information Resources/
+
+   You may edit the following numbers to set the maximum sizes after
+   which GopherMail should send output as multiple email messages:
+
+   Split=27K bytes/message <- For text, bin, HQX messages
+   Menu=100 items/message <- For menus and query responses
+   #
+   Name=About USCgopher
+   Numb=1
+   Type=1
+   Port=70
+
+   Path=1/About_USCgopher
+   Host=cwis.usc.edu
+   # ... (50 lines deleted) ...
+   Name=Other Gophers and Information Resources
+   Numb=9
+   Type=1
+   Port=70
+   Path=1/Other_Gophers_and_Information_Resources
+   Host=cwis.usc.edu
+ +--------------------------------------------------------------------+
+
+To proceed to a selection on the returned menu just email the whole
+text of the note (from the menu downwards) back to the gopher server,
+placing an "x" next to the items(s) you want to explore.  You'll then
+receive the next level of the gopher menu by email.   Some menu choices
+lead to other menus, some lead to text files, and some lead to searches.
+In the example above, let's select
+
+   x 9. Other Gophers & Info Resources
+
+and mail the whole shebang right back at the gophermail server. You
+should then get a menu with a number of interesting selections including
+"Gopher Jewels".  You'll find a LOT of good stuff along that path.  The
+Gopher Jewels project is probably the best organized collection of
+Internet resources around.
+
+If a menu item is labelled "Search" you can select that item with an "x"
+and supply your search words in the Subject: of your reply.  Note that
+your search criteria can be a single word or a boolean expression such
+as:
+
+   document and (historic or government)
+
+Each of the results (the "hits") of your search will be displayed as an
+entry on yet another gopher menu!
+
+Note: You needn't actually return the entire gopher menu and all the
+routing info that follows it each time you reply to the gophermail
+server.  If you want to minimize the size of your query, you can strip
+out the "menu" portion at the top and include only the portion below
+that pertains to the menu selection you want.
+
+Just remember that if you use this approach, you must specify "get all"
+on the Subject line.  (Exception: for searching, specify only the search
+terms on the Subject line.)  The example below is equivalent to
+selecting "option 9" as we did earlier.
+
+   Split=0K bytes/message
+   Menu=0 items/message
+   #
+   Name=Other Gophers and Information Resources
+   Numb=9
+   Type=1
+   Port=70
+   Path=1/Other_Gophers_and_Information_Resources
+   Host=cwis.usc.edu
+
+If this looks like nonsense to you, here's a human translation:
+
+   Connect to PORT 70 of the HOST (computer) at "cwis.usc.edu",
+   retrieve the sub-menu "Other Gophers", and send it to me in
+   ONE PIECE, regardless of its size.
+
+Note: Sometimes gophermail requests return a blank menu or message.
+This is most likely because the server failed to connect to the host
+from which you were trying to get your information.  Send your request
+again later and it'll probably work.
+
+
+
+                            VERONICA BY EMAIL
+                            ------------------
+
+Sorry, there currently are no active Veronica servers.
+
+Veronica was a resource-discovery system providing access to information
+resources held on most of the world's gopher servers.  In addition to
+native gopher data, veronica included references to many resources
+provided by other types of information servers, such as WWW servers,
+usenet archives, and telnet-accessible information services.
+
+As far as I can determine, the last Veronica server quit functioning at
+the beginning of 1999. My last full test of Veronica by email occurred
+in Oct 1998.
+
+
+                             USENET BY EMAIL
+                             ----------------
+
+Usenet is a collection of over 25000 discussion groups on every topic
+imaginable.  In order to get a proper start and avoid embarrasing
+yourself needlessly, you must read the Usenet new users intro document,
+which can be obtained by sending email to:
+
+   mail-server@rtfm.mit.edu
+
+and include this line in the BODY of the note:
+
+   send usenet/news.answers/news-newusers-intro
+
+To get a listing of Usenet newsgroups, add these commands to your note:
+
+   send usenet/news.answers/active-newsgroups/part1  (also get part2)
+   send usenet/news.answers/alt-hierarchies/part1    (also get part2 & part3)
+
+To get the FAQ (Frequently Asked Questions) file(s) for a given
+newsgroup, try a command like this:
+
+   index usenet/
+
+(Substitute dots for dashes if they appear in the newsgroup name.) If
+any FAQ files are available, they will be listed in the returned info,
+and you can request them with a command like:
+
+   send usenet//
+
+
+Reading Usenet Newsgroups
+-------------------------
+
+Once you've handled the preliminaries, you'll need to know how to read
+and contribute to Usenet newsgroups by email.   To read a newsgroup, you
+can use the gophermail service discussed earlier in this guide.
+
+To obtain a list of recent postings to a particular newsgroup, send the
+following lines to one of the gophermail servers mentioned previously.
+Specify "Subject: get all" and include only these lines in the message
+body.
+
+(You must replace "" below with the name of the Usenet
+newsgroup you wish to access.  eg: alt.answers, biz.comp.services,
+news.newusers.questions, etc.)
+
+   Type=1
+   Port=4320
+   Path=nntp ls 
+   Host=services.canberra.edu.au
+
+If this doesn't work, you can try another Host by substituting one of
+
+the lines below.
+
+   Host=gopher.ic.ac.uk (very very busy)
+
+Or you can try these servers.
+
+   Type=1
+   Port=70
+   Path=1/news
+   Host=gopher.pwr.wroc.pl
+
+   Type=1
+   Port=70
+   Path=1/usenet
+   Host=sunsite.doc.ic.ac.uk
+
+Note that some of these sites carry only a limited range of newsgroups,
+so you may have to try several before finding one which carries the
+newsgroup you're looking for.  When the newsgroup does not exist,
+gophermail sends something like "'nntp ls ': path does not
+exist". When a site does not accept outside requests, gophermail sends
+something like "Sorry, we don't accept requests outside campus".
+
+If successful, the gophermail server will send you a typical gopher menu
+on which you may select the individual postings you wish to read.  If
+your query returns nothing, or you get a "not found" message, try it at
+another time of day.  The servers are very busy during regular business
+hours.
+
+NOTE: Gophermail servers are a vanishing breed.  You can also get Usenet
+postings from several webmail servers listed in the WORLD-WIDE WEB BY
+EMAIL section later in this document.   There are two approaches:
+
+1) Use a webmail server to access a gopher site which carries Usenet.
+   The example from above when translated into a web address would be:
+     gopher://services.canberra.edu.au:4320/1nntp
+     gopher://gopher.pwr.wroc.pl:70/11/news
+     gopher://sunsite.doc.ic.ac.uk:70/1/usenet
+
+2) Look for an Agora server with a "Y" in the "Usenet Access" column and
+   send a command like this in the message body: send news:
+
+Note: See the "WWW By Email" section below for a list of "getweb"
+      "agora" and "www4mail" servers.
+
+With a little luck, you'll get a list of recent postings to the
+newsgroup, and then you can retrieve the individual postings by replying
+to the message from the Agora server.  Make sure not to change the
+subject line of the reply message, and just put the number of the
+posting you want in the message BODY.
+
+Posting In Usenet Newsgroups
+----------------------------
+
+If you decide to make a post of your own, here are two methods to try:
+
+METHOD 1: Mail the text of your post to:
+
+   group.name@newsgw.rrze.uni-erlangen.de     
+   mail2news-YYYYMMDD-group.name@anon.lcs.mit.edu
+
+   group.name@berlioz.crs4.it                 
+   group.name@comlab.ox.ac.uk                 
+   group.name@pubnews.demon.co.uk             
+   outnews+netnews.group.name@andrew.cmu.edu  
+   no.group.name@news.uninett.no              
+
+So to post to news.newusers.questions, you might send your message to:
+
+
+   news.newusers.questions@newsgw.rrze.uni-erlangen.de
+
+Be sure to include an appropriate Subject: line, and include your real
+name and email address at the close of your note.
+
+Substitute today's date instead of YYMMDD and the newsgroup name instead
+of "group.name" in the address.  For more information, send to
+mail2news@anon.lcs.mit.edu with Subject: help
+
+METHOD 2: Mail the text of your anonymous post to:
+
+   mail2news@anon.lcs.mit.edu     - Subject: help
+   mail2news@news.demon.co.uk     -
+   mail2news@replay.com           - see remailer@replay.com
+
+Note on Usenet Posting
+----------------------
+
+Use a webmail server to fetch Don Kitchen's helpful document at
+"http://www.sabotage.org/~don/mail2news.html" (See "World-Wide Web By
+Email" below for help with this). It contains tips on finding out if a
+mail server supports your newsgroup, keeping your address away from
+spammers, and an updated list of mail-to-news servers.
+
+
+Searching For Usenet Newsgroups
+-------------------------------
+
+Don't know the name of the newsgroup?  To search for Usenet groups about
+"pets", for example, send email to an Agora or www4mail server (see WWW
+section) with this line in the message BODY:
+
+   send http://alabanza.com/kabacoff/Inter-Links/cgi/news.cgi?pets
+
+Another way to find out about newsgroups that are relevant to your
+interests, send email to "liszter@bluemarble.net" with
+
+   news "keyword"
+
+in the BODY if the message. The quotes force an exact match. Of course
+you must replace "keyword" with your own search word such as
+"marketing", "bicycles", etc.
+
+
+                             USENET SEARCHES
+                             ---------------
+
+A service called REFERENCE.COM makes it possible to search USENET
+newsgroups for postings that contain keywords of interest to you.  You
+can even "subscribe" and receive a daily list of newsgroup postings that
+match your search criteria.  Send mail to "email-queries@reference.com"
+with HELP in the body of note for full details. CURRENTLY NOT WORKING...
+
+
+                       WORLD-WIDE WEB (WWW) BY EMAIL
+                       ------------------------------
+
+The World-Wide Web is the premier Internet navigational tool - a
+hypertext and multimedia system that lets you hop around the Net, read
+documents, and access images & sounds linked to a source.
+
+Have you ever heard someone say, "Wow, check out the cool stuff at
+http://www.somewhere.com/blah.html" and wondered what in the world they
+were talking about?  Now you can retrieve WWW documents by email using
+an Agora server.
+
+All you need to know is the Uniform Resource Locator (or URL, that long
+ugly string starting with "http:", "gopher:", or "ftp:") which defines
+the address of the document, and you can retrieve it by sending email
+
+to one of:
+
+   Agora Server Address         Location             Usenet Access?
+   ---------------------------  -------------------- --------------
+   agora@dna.affrc.go.jp        (Japan)               Y
+   agora@kamakura.mss.co.jp     (Japan)               Y
+   agora@www.eng.dmu.ac.uk      (DMU.UK users ONLY)
+   agora@uit.no                 (Norwegian users ONLY)
+   agora@mx.nsu.nsk.su          (NSU.RU users ONLY)
+
+In the body of your note include one of these lines, replacing ""
+with the actual URL specification.
+
+   send 
+   rsend    (to override your return address)
+
+This will send you back the document you requested, with a list of all
+the documents referenced within, so that you may make further requests.
+
+To try WWW by email send the following commands to an Agora server:
+
+   www
+   send http://www.w3.org
+
+In a few minutes you should receive the Agora help file and the "WWW
+Welcome Page" which will include references to other Web documents
+you'll want to explore.  Please read the Agora help file, as it contains
+answers to many commonly asked questions!
+
+THERE ARE SOME OTHER webmail servers listed below, which run software
+other than Agora.  They work pretty much the same, but it's a good idea
+to request the help file for the server you decide to use.
+
+Note: The GetWeb servers below can handle web pages which contain fill-in
+forms.  Other webmail servers do not provide this ability.
+
+   Address                      Syntax     Comments
+   -----------------------      ---------- ----------------------------
+
+   getweb@emailfetch.com        GET  intermittent since Mar99
+   getweb@usa.healthnet.org     Health personnel ONLY as of 07May99
+   webmail@www.ucc.ie           GO 
+   wwwfmail_pro@wwwfetch.com    Fee-based  Use 'Subject: info' for help
+
+Note: The webmail servers are sometimes unavailable for days (or weeks)
+at a time without explanation.  If you get an error or no reply, please
+try another address or retry in a day or so.
+
+THE NEW WWW4MAIL servers (combine functions of agora, getweb, and new
+browser email integration):
+
+   Address                      Comments
+   -----------------------      ---------------------------------------
+
+   www4mail@web.bellanet.org    send help in body of a message
+   www4mail@unganisha.idrc.ca   send help in body of a message
+   www4mail@wm.ictp.trieste.it  send help in body of a message
+
+If you want an up-to-date listing, then look at:
+http://www.geocities.com/CapitolHill/1236/servers.html
+
+
+                           WWW SEARCH BY EMAIL
+                           --------------------
+
+There's a lot of great stuff out on the Web, but how do you find it?
+Well, just like Archie and Veronica help you search FTP and gopher
+sites, there are several search engines that have been developed to
+search for information on the Web.  But until now, you had to have
+
+direct Internet access to use them.
+
+After a bit of research, I have found that it is possible to use several
+WWW search mechanisms by email.   Here are some sample queries that you
+can use to search via Lycos and WebCrawler.  Any of these lines can be
+sent to an Agora server (see above) to perform a search.  If you're not
+interested in frogs, then by all means feel free to use your own
+keywords.
+
+For Lycos, append a dot to your keywords to force an exact match, or you
+will get a substring search by default.  Separate words with a "+"
+sign.
+
+   http://www.lycos.com/cgi-bin/pursuit?&cat=dir&query=frog+dissection
+
+For WebCrawler searches you must separate words with a "+" sign.  All
+searches are exact, no trailing dot required.
+
+   http://www.webcrawler.com/cgi-bin/WebQuery?searchText=frog+dissection
+
+Another way to access search engines is to send a message to one of the
+GETWEB servers (see list above) with a line like this in the message
+body:
+
+   SEARCH  
+
+Replace "engine" with YAHOO, ALTAVISTA, or INFOSEEK, and use your own
+search words.  Here's an example:
+
+   SEARCH YAHOO consumer protection
+
+
+                              MAILING LISTS
+                              -------------
+
+There are literally thousands of discussion groups that stay in touch
+using email based systems known as "mailing lists".   People interested
+in a topic "subscribe" to a "list" and then send and receive postings by
+email.   For information concerning new lists, send email to:
+
+   LISTSERV@HYPATIA.CS.WISC.EDU
+
+In the body of your note include only this command:
+
+   INFO NEW-LIST
+
+Finding a Mailing List
+----------------------
+
+To find out about mailing lists that are relevant to your interests,
+send email to "liszter@bluemarble.net" with
+
+   search "keyword"
+
+in the BODY if the message. The quotes force an exact match. Of course
+you must replace "keyword" with your own search word such as
+"marketing", "bicycles", etc.
+
+New in These Parts?
+-------------------
+
+If you're new to the Internet, I suggest you subscribe to the HELP-NET
+list where you're likely to find answers to your questions.  Send the
+command:
+
+   SUBSCRIBE HELP-NET 
+
+in the BODY of a note to LISTSERV@CRCVMS.UNL.EDU, then email your
+questions to the list address:
+
+
+   HELP-NET@CRCVMS.UNL.EDU
+
+
+                               FINGER BY EMAIL
+                               ----------------
+
+"Finger" is a utility that returns information about another user.
+Usually it's just boring stuff like last logon, etc., but sometimes
+people put fun or useful information in their finger replies.  To try
+out finger, send this line (in the message BODY) to a webmail server:
+
+   send http://www.mit.edu:8001/finger?
+
+Use one of the email addresses below instead of  ...
+
+   nasanews@space.mit.edu      coke@cs.cmu.edu
+   quake@gldfs.cr.usgs.gov     copi@oddjob.uchicago.edu
+
+
+                     "DIRECTORY ASSISTANCE" BY EMAIL
+                     --------------------------------
+
+There is an email address lookup database at MIT which keeps tabs on
+everyone who has posted a message on Usenet.  Send email to
+mail-server@rtfm.mit.edu and enter only this line in the BODY of the
+note:
+   send usenet-addresses/
+
+Specify as much information as you can about the person (lastname,
+firstname, userid, site, etc.) to limit the amount of information that
+is returned to you.  Here's a sample query to find the address of
+someone you think may be at Harvard University:
+
+   send usenet-addresses/Jane Doe Harvard
+
+WHOIS is another tool that can be used to Search for domain name; NIC
+handle; host IP or lastname, firstname.
+
+The default action for Whois, unless directed otherwise with a keyword
+(e.g. "domain root"), is to do a very broad search, looking for matches
+in many fields: handle, name, or hostname and finding all record types.
+
+Let's say we want to find someone named Ed Krol (a noted 'net
+personality). Our Whois query will be addressed to an Agora or www4mail
+server (see list in WWW section) and will contain only this line:
+
+   http://www.networksolutions.com/cgi-bin/whois/whois?STRING=krol%2Ced
+
+Whois then shows the results in one of two ways: as a full, detailed
+display for a single match (with possible subdisplay), or as one- or
+two-line summaries for multiple matches.
+
+If all goes well, you'll receive a list something like this:
+
+   name: Krol, Edward (not a real person)  
+   organization: Universitry of Foobar, Computer science
+   address: Campus Box 777
+   city, state: Urbana, IL 61801-4399
+   phone: (303) 492-1234
+
+
+
+                           TELNET BY EMAIL
+                           -----------------
+
+Sorry, there is no way to access TELNET sites by email.
+
+
+                           A FEW NET-GOODIES
+
+                           -----------------
+
+Here are some other interesting things you can do by email.   (Some of
+them are accessible only by email!)
+
+* ANONYMOUS EMAIL
+An "anon server" provides a front for sending mail messages and posting
+to Usenet newsgroups anonymously, should the need ever arise.  To get
+instructions send email to help@nym.alias.net or remailer@anon.efga.org
+with a Subject: remailer-help
+
+* ASK DR. MATH
+Have a math question?  Dr. Math answers questions from K-12 students and
+their teachers about Mathematics.  Write to dr.math@forum.swarthmore.edu
+
+* ASK-A-GEOLOGIST
+Send your earth-shattering questions to
+ask-a-geologist@octopus.wr.usgs.gov and a US Geological Service
+scientist will try to help.
+
+* ASK-A-TECH
+Send your computer hardware or software support questions to
+helpdesk@ask-a-tech.org and this non-profit organization will try to
+answer your question.
+
+* BIBLE SEARCH
+Search the King James version of the Bible.  Examples below can be sent
+to an Agora server.  Use "+" to specify multiple words; prefix proper
+names with "%23"; add "&PHRASE=ON" to find a phrase.
+  send http://estragon.uchicago.edu/cgi-bin/KJV?title=&word=angel+%23Mary
+  send http://estragon.uchicago.edu/cgi-bin/KJV?title=&word=fig+tree&PHRASE=ON
+
+* CANCER DATABASE
+To access the National Cancer Institute's database, send email to
+cancernet@icicb.nci.nih.gov with "help" or "spanish" in the message
+body.
+
+* COUNTRY CODES
+Stumped by those 2-letter country codes in Internet addresses?  Send
+email to address-codes@newbie.net for an explanation.
+
+The International Email accessibility FAQ is retrievable by email.
+Send email to mail-server@rtfm.mit.edu and enter only this line in the
+BODY of the note:
+   send usenet/news.answers/mail/country-codes
+
+* CURRENCY CONVERSION
+You can get foreign exchange rates for the U.S. dollar and other
+currencies by sending this URL to a ww4mail server:
+  http://cnnfn.com/markets/currencies.html
+
+* EMAIL TO SNAIL-MAIL
+Need to get a message to someone in Britain who doesn't have email?
+Send it to PaperMail!  For full details on this fee-based service, send
+email to info@papermail.win-uk.net
+
+* EMOTIONAL SUPPORT
+There's a suicide helpline accessible by email.   Send your message to
+jo@samaritans.org -- No syntax, they have humans!  Also any mail to
+care@netservs.com returns a listing of hundreds of emotional support
+resources on the Internet.
+
+* FINANCIAL AID FAQ
+A comprehensive guide to higher education financial aid.  Send email to
+a web to mail server and retrieve this web page:
+   send http://www.finaid.org/questions/faq.phtml
+
+* FINDING EMAIL ADDRESSES
+For a guide to finding someone's email addresses.   Send email to
+
+mail-server@rtfm.mit.edu and enter only this line in the BODY of the
+note:
+   send usenet/news.answers/finding-addresses
+
+* FREE HOME PAGE BY EMAIL (For German residents only)
+InetWire offers free non-commercial homepages with up to 500KB of
+space.  Make a zip file with index.htm being the home page, put a URL
+something like "http://inetw.com/home/myname" in the Subject line and
+then send your zip file as an ATTACHMENT to attach@inetw.com.  (If your
+email program doesn't support file attachments, you're out of luck.)
+
+* FTPMAIL/WEBMAIL SERVER STATUS
+Is your favorite FTPmail/Agora/GetWeb site overloaded or down?  Find out
+by sending the "get file stats.txt" command to mailserv@netservs.com
+
+* GENE SPLICING AND SEQUENCE ANALYSIS
+GRAIL is a suite of tools designed to provide analysis and putative
+annotation of DNA sequences both interactively and through the use of
+automated computation.  To learn how to use this service, send email to
+grail@ornl.gov with the word "help" in the body of the message.
+
+* GERMAN <-> ENGLISH TRANSLATION SERVICE
+The LEO translation service is now available by email, by sending to
+translate@leo.org.  The helpfile at http://www.leo.org/dict/mail.html
+can be retrieved via webmail.
+
+* INTERNET MOVIE DATABASE
+Get tons of info on movies, actors, and directors. Send email to
+movie@imdb.com with HELP in the subject line.
+
+* INTERNET TIMELINE
+To learn the history of the Internet from 1950 to 1998, send email to
+timeline@hobbes.mitre.org
+
+* THE INTERNET TOURBUS
+Take a virtual tour of the Internet - hop on The Internet TourBus!
+You'll receive a short mailing twice a week highlighting fun and
+interesting sites on the Internet.  It's absolutely free, and you can
+join 80,000 others by sending SUBSCRIBE TOURBUS Firstname Lastname in
+the BODY of a message to "LISTSERV@LISTSERV.AOL.COM".
+
+* ISPs BY AREA CODE
+For a list of Internet Service Providers in your area code, send this
+line to an Agora server: http://thelist.iworld.com/areacode/???.html
+(where ???=your area code)
+
+* LANGUAGE TRANSLATION BY EMAIL
+Send an e-mail as usual to a foreign language colleague in your native
+tongue.  In the "Cc:" line, send a carbon copy of the message to the
+Universal T-mail Translator.  The way you format the address will
+determine how the message is translated.
+Cc: (Original language)-(Final translation)@T-Mail.com
+English (en or an), French (fr), German (ge or de), Italian (it),
+Spanish (sp or es), Portuguese (pt or po)
+So English to French translation would be en-fr@t-mail.com
+
+* LEARN TO SPEAK GEEK
+Get BABEL via ftpmail, a glossary of computer abbreviations and acronyms.
+open ftp.access.digex.net
+chdir pub/access/ikind/public_html
+binary
+get babeltxt.zip
+quit
+
+* MEDICAL INFORMATION BY EMAIL
+Send a blank email message to hnet@usa.healthnet.org to receive a FAQ
+which lists locations for medical information that can be accessed by
+email methods.
+
+
+* MICROSOFT KNOWLEDGE BASE
+The Microsoft knowledge base has articles that can be retrieved by
+email. For the index, send email to mshelp@microsoft.com with Subject:
+index
+
+* MORE WORD FUN!
+The wordserver at wsmith@wordsmith.org will serve up A.Word.A.Day,
+Dictionary by Mail, Thesaurus by Mail, Acronym by Mail and Anagram by
+Mail. Send blank email for the help file. Merriam-Webster dictionary
+offers the word of the day -- To subscribe, send mail to
+LISTSERV@LISTSERV.WEBSTER.M-W.COM with the command SUBSCRIBE MW-WOD
+[your name].
+
+* MORTGAGE/LOAN CALCULATOR
+To calculate your monthly loan payment, send this line to an Agora
+server:
+http://www.interest.com/hugh/calc/simple.cgi?amt=100000&int=8.00&yrs=30
+(Change the values for principle, interest and term as appropriate.)
+
+* PLAY GAMES BY EMAIL
+Yoyodyne specializes in online games.  Send blank email to win@yoyo.com
+You can also play games via the PBeM Server, for info, send email to
+pbmserv@gamerz.net with Subject: help
+
+* SCOUT REPORT
+...is a weekly featuring announcements of new and interesting resources
+on the Internet.  To subscribe, send email to listserv@cs.wisc.edu with
+"Subscribe scout-report Your Name" in the body.
+
+* SENDING A FAX BY EMAIL
+The TPC.INT "Remote Printing Experiment" is the grandfather of Internet
+faxing services.  Send email to tpcfaq@info.tpc.int with no subject and
+"help" in the body.  For a list of country phone numbers served by this
+service, send email to tpccover@info.tpc.int with no subject and nothing
+in the body.
+
+You can also get the FAX FAQ via electronic mail. Send email to
+mail-server@rtfm.mit.edu and enter only this line in the BODY of the
+note:
+   send usenet/news.answers/internet-services/fax-faq
+
+* SENDING MAIL TO VARIOUS NETWORKS
+For a guide to communicating with people on the various networks that
+make up the Internet, send email to mail-server@rtfm.mit.edu and enter
+only this line in the BODY of the note:
+   send usenet/news.answers/mail/inter-network-guide
+
+* SHAREWARE
+The MS-News mailing list is used to announce new files uploaded to
+Simtel.Net.  To subscribe, send email to listserv@Simtel.Net with this
+command in the body of your message:  add ms-news
+
+* STATLIB
+A system for distributing statistical software, datasets, and
+information by electronic mail, FTP, and WWW.  To get the index, send
+email to statlib@lib.stat.cmu.edu with the one line message "send
+index".
+
+* STOCK MARKET QUOTE
+To get a stock market quote, send this line to an Agora server:
+http://finance.yahoo.com/q?d=t&s=xxxx where xxxx is the stock market
+symbol.
+
+* TRACK UPS PACKAGES
+You can track your UPS packages now thru email.   Send an email to
+totaltrack@ups.com and in the subject or the body place the complete
+tracking number.
+
+* THE USENET ORACLE
+
+A cooperative, anonymous and humorous exchange of questions and
+answers.  Send email to oracle@cs.indiana.edu for more information.
+
+* U.S. CONGRESS AND THE WHITE HOUSE
+You can contact the President (president@whitehouse.gov) or Vice
+President (vice_president@whitehouse.gov).
+
+* OTHER SOURCES OF US GOV'T INFO:
+Send email to mail-server@rtfm.mit.edu and enter only these lines in
+the BODY of the note:
+   send usenet/news.answers/us-govt-net-pointers/part1
+   send usenet/news.answers/us-govt-net-pointers/part2
+
+* VIRTUAL PIZZA!
+Order an electronic pizza by email.   Send email to
+"pizza@ecst.csuchico.edu" with a subject of "pizza help" for details.
+
+* VIRUS PROTECTION SOFTWARE
+F-Prot, one of the top PC virus scanners can be requested by email. To
+get the current version (uuencoded) send email to
+f-prot-update@complex.is with this message body:
+  send-as:  uue
+
+* WEBSTER DICTIONARY LOOKUP
+To retrieve the definition of a word, send this line to an Agora
+server:  send http://c.gp.cs.cmu.edu:5103/prog/webster?whatever
+
+* FOR FURTHER READING
+For other things you can do with email, send blank email to
+email4u@wireworm.com   For more details on using web search engines by
+email use a web-to-mail server to get this file
+  send ftp://ftp.netcom.com/pub/gb/gboyd/wsintro.faq
+
+
+
+                           SOMETHING MISSING?
+                           ------------------
+
+This file should be somewhere between 1300 and 1400 lines of text, and
+about 58KB in size.  If the file you have is much smaller, or says
+something like "part 2 of 2" near the top, you're missing something.
+Most likely, that's because your mail system has file size quotas that
+prevented part 1 from reaching you.  Here's the solution:
+
+To get the file in multiple chunks, send to mail-server@rtfm.mit.edu and
+enter only these lines in the BODY of the note:
+
+size 25000
+send usenet/news.answers/internet-services/access-via-email
+
+The mail server will break up the file into chunks of 25000 bytes and
+send them in separate messages.  You can change "25000" to another
+number if it suits your needs.
+
+
+                          CONTACTING THE AUTHOR
+                          ---------------------
+
+I welcome your feedback on this guide and can be reached at the
+following addresses.  Send corrections, ideas, suggestions and comments
+by email.   I'll try to include any new services in future editions of
+this guide.
+
+Email   :  gboyd@netcom.com
+Web     :  http://www.geocities.com/CapitolHill/1236/
+
+--------------------------------------------------------------------------
+
+                Copyright (c) 1999, Gerald E. Boyd
+
+                         gboyd@netcom.com
+
+      All rights reserved. Permission is granted to duplicate and
+      distribute copies of this document provided the copyright
+      notice and this permission notice are preserved on all copies.
+
+--------------------------------------------------------------------------
+
