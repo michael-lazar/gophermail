@@ -1,0 +1,447 @@
+#!/usr/calvin/bin/perl
+#
+# gophermail.pl
+#
+# Written in a few days in mid September 1992 at Calvin College by
+# Fred Bremmer (fredb@calvin.edu).  Fine tuned over the next few weeks.
+#
+# After you customize these variables, don't forget to edit the
+# "About GopherMail" help file.  It should be set up as a text file on
+# your Gopher server, pointed to by the first two variables:
+
+$defaulthost = "gopher.calvin.edu"; # for default gopher menu
+$helplinkpath = "0/gophermail";	# for responding to "help" in Subject:
+$gophersite = "Calvin College";	# for Subject of default menu
+$tmpdir = "/tmp";		# for holding files before mailing them
+$logfile = "/home/gopher/gophermail.log"; # for Big Brother
+$userfile = "/home/gopher/userlist"; # for a possible mailing list
+$defaultmenusplit = 100;   # split menus after this many items (for types [17])
+$defaultsplitsize = 27000; # maximum message length in bytes (for types [049s])
+
+$inheader = 1;			# assume we start with the email header
+$nolinksfound = 1;		# we haven't found any links yet
+$doalllinks = 1;		# assume we should follow all links
+
+$linklist{'Menu'} = $defaultmenusplit;
+$linklist{'Split'} = $defaultsplitsize;
+
+$typelist{0} = ".";		# suffix for type 0, text
+$typelist{1} = "/";		# suffix for type 1, directory
+$typelist{2} = " <CSO> (Send name in Subject:)"; # suffix for type 2, CSO
+$typelist{4} = " <HQX>";	# suffix for type 4, Binhex
+$typelist{7} = " <?> (Send keywords in Subject:)"; # suffix for type 7, index
+$typelist{8} = " <TEL> (Not supported)"; # suffix for type 8, telnet
+$typelist{9} = " <Bin>";	# suffix for type 9, binary
+$typelist{'s'} = " <Sound> (Can be huge)"; # suffix for type s, sound
+
+@gaplist = ("  "," ");		# kludge for padding menu numbers
+
+$linklist{'Host'} = "";		# start with blank host
+$linklist{'Type'} = 1;		# assume type 1, a directory
+$linklist{'Port'} = 70;		# assume the standard port number
+$linklist{'Path'} = "";		# assume the root path
+$linklist{'Name'} = "GopherMail Message"; # generic title
+
+
+while (<STDIN>) {
+    if ($inheader) {
+	chop;
+	($field, $value) = split(" ",$_,2); # split headers at first space
+	# change "name <address>" to "address (name)" in From and Reply-To:
+	$value =~ s/(^[^<]*)<([^>]*)>/$2 \($1\)/ unless $field cmp "From:";
+	$value =~ s/(^[^<]*)<([^>]*)>/$2 \($1\)/ unless $field cmp "Reply-To:";
+	$headerlist{$field} = $value if $field;
+	$inheader = length($_);	# out of header if length = 0 (blank line)
+	next;
+    }
+    else {
+	if (/\[Archived as \/info-mac\/([^;]+); ([^\]]+)/) {
+	    $_ = "Expert=1\n";
+	    $linklist{'Name'} = "$1 $2"; # This stuff lets me get files
+	    $linklist{'Type'} = 4;       # from the Info-Mac Archive site
+	    $linklist{'Port'} = 70;      # at Stanford by pasting the
+	    $linklist{'Path'} = "0info-mac/$1";	# "[Archived as ..]." lines
+	    $linklist{'Host'} = "sumex-aim.stanford.edu"; # into mail.
+	    $linklist{'Split'} = 0; # No split, so Eudora can de-hqx them.
+	}
+	if (/([012479s])([^\t]+)\t([^\t]+)\t([^\t])\t(\d+)\t?/) {
+	    $_ = "Expert=1\n";
+	    $linklist{'Type'} = $1; # This section recognizes and follows
+	    $linklist{'Name'} = $2; # links in the raw gopher connection
+	    $linklist{'Path'} = $3; # form: 0Title\t0/path\thost.name\t70\t+
+	    $linklist{'Host'} = $4; # BTW, this was all my original version
+	    $linklist{'Port'} = $5; # knew how to read.  Yuck.
+	}
+	# This allows people to specify a Subject: or Reply-To: in body
+	$headerlist{'Subject:'} = $1 if /Subject: (.+)/;
+	$headerlist{'Reply-To:'} = $1 if /Reply-To: (.+)/;
+	s/^[^NTPHSMEXx]*//;	# strip most indent chars, keep keywords
+	s/ *$//;		# strip trailing spaces
+	next unless /^Name=|^Numb=|^Type=|^Port=|^Path=|^Host=|^Split=|^Menu=|^Expert=|^X|^x/;
+	if (/^[Xx]\D*(\d+)/) {	# if line contains X or x before menu number
+	    $doalllinks = 0;	# don't follow all links
+	    $dolink[$1] = 1;	# only the x'ed one(s)
+	    next;
+	}
+	$nolinksfound = 0;	# we found link fields
+	chop;
+	($field, $fvalue) = split('=', $_, 2); # split link info at the "="
+	$linklist{$field} = $fvalue; # build associative array of link fields
+
+	# Follow the link when we find the Host= (if the type is supported)
+	if (($linklist{'Host'}) && ($linklist{'Type'} =~ /[012479s]/)) {
+	    $subject = $linklist{'Name'};
+	    $numb = $linklist{'Numb'};
+	    $mytype = $linklist{'Type'};
+	    $port = $linklist{'Port'};
+	    $path = $linklist{'Path'};
+	    $host = $linklist{'Host'};
+	    $dest = $headerlist{'From:'}; # use From: unless has Reply-To:
+	    $dest = $headerlist{'Reply-To:'} if $headerlist{'Reply-To:'};
+
+	    if ($mytype == 2) {	# format a phonebook query
+		$temp = $headerlist{'Subject:'};
+		$headerlist{'Subject:'} =~ s/ *menu=\d+ *//i;
+		$headerlist{'Subject:'} =~ s/ *split=\d+ *k* *//i;
+		$subject .= " ($headerlist{'Subject:'})";
+		$path = "ph $headerlist{'Subject:'}\nquit";
+		$headerlist{'Subject:'} = $temp;
+	    }
+
+	    elsif ($mytype == 7) { # format a WAIS query
+		$temp = $headerlist{'Subject:'};
+		$headerlist{'Subject:'} =~ s/, */ /g;
+		$headerlist{'Subject:'} =~ s/ *menu=\d+ *//i;
+		$headerlist{'Subject:'} =~ s/ *split=\d+ *k* *//i;
+		$subject .= " ($headerlist{'Subject:'})";
+		$path .= "\t$headerlist{'Subject:'}";
+		$headerlist{'Subject:'} = $temp;
+	    }
+
+	    elsif ($mytype =~ /[s9]/) {	# prepare for uuencoded binary
+		$path =~ s/^0/$mytype/;	# uuname is after last / in path
+		$uuname = $1 if $path =~ /\/*([\w\d-_\.]+)$/;
+	    }
+
+	    # Follow this link if it was X'ed, or if none were X'ed
+	    &FOLLOWLINK if $doalllinks||$dolink[$numb];
+
+	    $linklist{'Host'} = ""; # clear Host field, reset to defaults
+	    $linklist{'Type'} = 1;
+	    $linklist{'Port'} = 70;
+	    $linklist{'Path'} = "";
+	    $linklist{'Name'} = "GopherMail Message";
+	}
+	else {
+	    $linklist{'Host'} = "";
+	}
+    }				# end of else in body of message
+    next;
+}				# end of while stdin
+
+if ($nolinksfound) {		# In case the message contains no links,
+    $host = $defaulthost;	# we send them a top level gopher menu
+
+    # If the subject contains a fully qualified domain name, use it.
+    $host = $1 if $headerlist{'Subject:'} =~ / *([\w-]+\.[\w]+\S*) *.*/;
+
+    $mytype = $linklist{'Type'};
+    $port = $linklist{'Port'};
+
+    # If the subject also includes a port number, use it too.
+    $port = $2 if $headerlist{'Subject:'} =~ / *([\w-]+\.\w+\S*) *(\d+)/;
+
+    $path = $linklist{'Path'};
+    $subject = "$gophersite Gopher Server"; # standard default menu subject
+
+    # if they supplied a host and port, include them in the subject.
+    $subject = "Gopher Server at $host" if $host cmp $defaulthost;
+    $subject .= " $port" unless $port == 70;
+
+    $dest = $headerlist{'From:'}; # Again, send to From: unless has Reply-To:
+    $dest = $headerlist{'Reply-To:'} if $headerlist{'Reply-To:'};
+
+    if ($headerlist{'Subject:'} =~ / *help.*/i) { # If they ask for help...
+	$host = $defaulthost;
+	$mytype = 0;
+	$port = 70;
+	$path = $helplinkpath;	# ...we send it to them.
+	$subject = "GopherMail Help";
+    }
+
+    &FOLLOWLINK;
+}
+
+sub FOLLOWLINK {
+    
+# A lot of this TCP code came from the perl man page.
+# Thanks go to Nick Hengeveld (nickh@calvin.edu) for adapting it to gopher.
+    
+    require 'sys/socket.ph';
+    
+    $sockaddr = 'S n a4 x8';
+    chop($hostname = `hostname`);
+    
+    ($name, $aliases, $proto) = getprotobyname('tcp');
+    ($name, $aliases, $port) = getservbyname($port, 'tcp') unless $port =~ /^\d+$/;
+    ($name, $aliases, $type, $len, $thisaddr) = gethostbyname($hostname);
+    ($name, $aliases, $type, $len, $thataddr) = gethostbyname($host);
+    
+    $this = pack($sockaddr, &AF_INET, 0, $thisaddr);
+    $that = pack($sockaddr, &AF_INET, $port, $thataddr);
+    
+    socket(S, &PF_INET, &SOCK_STREAM, $proto) || die "socket: $!";
+    bind(S, $this) || die "bind: $!";
+    connect(S, $that) || warn "connect: $!";
+
+    $messagelength = 0;		# initialize size to 0
+    $section = 1;		# initialize section to 1
+    $line = 0;			# initialize line to 0
+
+    $path =~ s/\\n/\n/g if $linklist{'Expert'};	# "\n" to newline if Expert
+    ($addr, $fullname) = split(" ",$dest,2); # use the addr for sendmail arg
+
+    $splitinfo = $headerlist{'Subject:'}; # take split info from Subject:
+    $splitinfo =~ s/ //g;	# remove spaces
+
+    # override split default if Subject: contained "split=9K"
+    $linklist{'Split'} = $1 if $splitinfo =~ /split=(\d+k?)/i;
+
+    $linklist{'Split'} =~ s/k/000/ig;	# change 27k to 27000 (I know, 1k=1024)
+    $linklist{'Split'} =~ s/\D*(\d*).*/\1/ig; # remove leading,trailing junk
+    $splitsize = int($linklist{'Split'}) if $linklist{'Split'};
+    $splitsize = $defaultsplitsize if $splitsize < 0; # avoid negatives
+
+    # override menu default if Subject: contained "menu=99"
+    $linklist{'Menu'} = $1 if $splitinfo =~ /menu=(\d+)/i;
+
+    $linklist{'Menu'} =~ s/\D*(\d+).*/\1/ig; # remove leading,trailing junk
+    $menusplit = int($linklist{'Menu'}) if $linklist{'Split'};
+    $menusplit = $defaultmenusplit if $menusplit < 0; # avoid negatives
+
+    # Next line tries to work around a strange mailer reply method
+    $dest = $headerlist{'Return-Path:'} if $dest =~ /^gopher/i;
+
+    if ($dest =~ /gopher|Mailer-Daemon/i) { # quit if to a gopher or Mailer
+	$subject = "*** Quitting to avoid possible loop ***"; # for LOG
+	&LOG;
+	die "*** Quitting to avoid possible loop ***\nGopherMail won't send messages to addresses containing 'gopher'.\n"; # try to explain why in mail error
+    }
+
+    &LOG; # write out the log info before writing/reading socket
+
+    select(S); $| = 1;		# flush the socket buffer quickly
+    print S "$path\r\n";	# send the selector string to the socket
+
+    if ($mytype =~ /[04]/) {	# if link is text or HQX
+	&DOTEXT;
+    }
+
+    elsif ($mytype == 2) {	# if link is a CSO (qi) phonebook
+	&DOCSO;
+    }
+
+    elsif ($mytype =~ /[9s]/) {
+	&DOBIN;
+    }
+
+    elsif ($mytype =~ /[17]/) {	# menus and WAIS-type indices
+	&DOMENU;
+    }
+    else {}			# unsupported link type
+}
+
+sub LOG {
+    if (open(USERS,">>$userfile")) {
+	print USERS "$dest\n";
+	close(USERS);
+    }
+    ($sec,$min,$hour,$mday,$mon,$year,$wday,$yday,$isdst) = localtime(time);
+    $mon++;
+    if (open(LOG,">>$logfile")) {
+	print LOG "$mytype[$subject] [$dest] $host $mon/$mday ";
+	print LOG "0" if $hour < 10;
+	print LOG "$hour:";
+	print LOG "0" if $min < 10;
+	print LOG "$min:";
+	print LOG "0" if $sec < 10;
+	print LOG "$sec";
+	$ksize = $splitsize;
+	$ksize =~ s/(.*)000$/\1K/;
+	print LOG " s$ksize" unless $splitsize == $defaultsplitsize;
+	print LOG " m$menusplit" unless $menusplit == $defaultmenusplit;
+	print LOG "\n";
+	close(LOG);
+    }
+}
+
+sub DOTEXT {
+    &OPENMAIL;			# start the first (or only) message
+    while (<S>) {
+	s/\033.//g;		# change ESC+char to nothing (WAIS cleanup)
+	print unless /^\.\r\n$/; # print all but the last line
+	$messagelength += length; # add length of current line to total
+	if ($splitsize && ($messagelength > $splitsize)) { # if too big
+	    $section++;		# start next section
+	    print "\n.\n";	# period to end mail
+	    close (MAIL);	# close the pipe
+	    &OPENMAIL;		# start a new message
+	    $messagelength = 0;	# re-initialize message length to 0
+	}
+    }
+    print "\n.\n";		# period to end mail
+    close (MAIL);		# close the pipe
+}
+
+sub DOCSO {
+    &OPENMAIL;			# start the message
+    while (<S>) {		# this just formats the ph output a bit
+	chop;
+	($junk, $f1,$f2,$f3) = split(':',$_,4);
+	print "\n" if ($lastf1 && ($lastf1 cmp $f1));
+	print "$f1" unless ($f1 =~ /^\d*$|^Ok.$|^Bye!$/);
+	print $f2;
+	print ":$f3" if $f3;
+	print "\n";
+	$lastf1 = $f1;
+    }
+    print "\n.\n";		# period to end mail
+    close (MAIL);		# close the pipe
+}
+
+sub DOBIN {
+    open(UUENCODE, "| uuencode $uuname > $tmpdir/gophermail$$");
+    while (<S>) {
+	print UUENCODE;		# pipe socket output into uuencode
+    } 
+    close UUENCODE || warn "uuencode exited $?";
+	
+    # now read and send the file
+    &OPENMAIL;			# start the first (or only) message
+    open(FILE,"$tmpdir/gophermail$$");
+    while (<FILE>) {
+	print;
+	$messagelength += length; # add length of current line to total
+	if ($splitsize && ($messagelength > $splitsize)) { # if too big
+	    $section++;		# start next section
+	    print "\n.\n";	# period to end mail
+	    close (MAIL);	# close the pipe
+	    &OPENMAIL;		# start a new message
+	    $messagelength = 0;	# re-initialize message length to 0
+	}
+    }
+    print "\n.\n";		# period to end mail
+    close (MAIL);		# close the pipe
+    unlink "$tmpdir/gophermail$$"; # delete the temp file
+}
+
+sub DOMENU {
+    while (<S>) {
+	chop;			# chop CR
+	chop;			# chop LF
+
+	# split raw gopher (or gopher+) output into fields
+	($lname, $lpath, $lhost, $lport, $lplus) = split(/\t/, $_, 5);
+	$ltype = substr($lname,0,1);
+	$ltitle = substr($lname,1);
+
+	$line++;		# increment line count
+
+	# now build menu line: spaces,number,period,gap,title,type-suffix
+	$menuarray[$line] =  "      $line.$gaplist[length($line)-1]";
+	$menuarray[$line] .= "$ltitle$typelist{$ltype}\n";
+
+	$namearray[$line] = $ltitle; # Add each field to its own array.
+	$typearray[$line] = $ltype; # Arrays are indexed by line number,
+	$portarray[$line] = $lport; # which is the same as the link "Numb=",
+	$patharray[$line] = $lpath; # which is the same as menu number.
+	$hostarray[$line] = $lhost; # (which is why X-ing menu numbers works.)
+	next;
+    }
+    $line--;			# make $line contain the true number of lines
+    &OPENMAIL;			# open the first (or only) mail message
+    &MENUHDR;			# put the menu header at top of message
+    $nextlink = 1;		# initialize which link to start with to 1
+
+    for ($i=1; $i <= $line; $i++) {
+	print "$menuarray[$i]";	# just print the preformatted menu lines
+	$frac = $i/$menusplit if $menusplit > 0; # check if menu limit reached
+
+	if (($menusplit && ($frac == int($frac))) || ($i == $line)) {
+	    &DOMENUMIDDLE;	# print blank lines, explain split values
+	    &DOMENULINKS;	# print the actual link info
+	}
+    }
+    print "\n.\n";
+}
+
+sub DOMENUMIDDLE {
+    print "\n\n\n\n\n\n\n\n\cL\n\n";
+    print <<EOM;
+You may edit the following two numbers to set the maximum sizes after which
+GopherMail should send output as multiple email messages:
+
+EOM
+    $ksize = $splitsize;
+    $ksize =~ s/(.*)000$/\1K/; # change 000 to K
+    $s = "";
+    $s = "s" unless $splitsize == 1;
+    print <<EOM;
+Split=$ksize byte$s/message <- For text, bin, HQX messages (0 = No split)
+EOM
+    $s = "";
+    $s = "s" unless $menusplit == 1;
+    print <<EOM;
+Menu=$menusplit item$s/message <- For menus and query responses (0 = No split)
+EOM
+    print "\n\cL\n";
+}
+
+sub DOMENULINKS {
+    for ($j=$nextlink; $j <= $i; $j++) {
+	print "#\n";
+	print "Name=$namearray[$j]\n";
+	print "Numb=$j\n";
+	print "Type=$typearray[$j]\n";
+	print "Port=$portarray[$j]\n";
+	print "Path=$patharray[$j]\n";
+	print "Host=$hostarray[$j]\n";
+    }
+    $section++;
+    $nextlink = $i + 1;
+    print "\n.\n";
+    if ($i < $line) {		# if we're not done yet,
+	&OPENMAIL;		# start a new message
+	&MENUHDR;		# and put menu headers at the top
+    }
+}
+
+sub OPENMAIL {
+    open(MAIL, "|/usr/lib/sendmail $addr");
+    close (STDOUT);
+    close (STDOUT);
+    open(STDOUT, ">& MAIL");
+    open(STDOUT, ">& MAIL");
+    select(MAIL);
+
+    print "To: $dest\n";
+    print "Subject: $subject";
+    print " Part $section" if $section > 1;
+    print "\n";
+    $ksize = $splitsize;
+    $ksize =~ s/(.*)000$/\1K/;
+    $s = "s" if $splitsize > 1;
+    print "X-Split: After $ksize byte$s/message\n" if ($splitsize && $mytype =~ /[049s]/);
+    $s = "s" if $menusplit > 1;
+    print "X-Menu: Max. $menusplit item$s/message\n" if ($menusplit && $mytype =~ /[17]/);
+    print "\n";			# gap between header and body
+}
+
+sub MENUHDR {
+    print <<EOM;
+Mail this file back to gopher with an X before the menu items that you want.
+If you don't mark any items, gopher will send all of them.
+
+
+EOM
+}

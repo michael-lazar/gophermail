@@ -1,0 +1,17 @@
+umask 117
+
+cd /home/gopher
+
+# rotate the GopherMail logs
+
+mv gophermail.log.2 gophermail.log.3
+mv gophermail.log.1 gophermail.log.2
+mv gophermail.log.0 gophermail.log.1
+
+mv gophermail.log gophermail.log.0 && >gophermail.log
+
+touch gophermail.log
+
+mv userlist templist
+cat templist | sort | uniq > userlist
+rm templist

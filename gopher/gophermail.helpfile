@@ -1,0 +1,163 @@
+About GopherMail
+
+GopherMail is a gopher client that uses electronic mail to interact
+with the user.  Messages containing menus and gopher link information
+are mailed to users in response to their requests.  Users reply to
+these messages and indicate which menu items they want.  It lets
+people use Gopher without requiring them to have an account directly
+on the Internet, because it communicates through email messages
+instead of direct "live" network connections.
+
+Until now, Gopher could only be used by people with Mac's, PC's, NeXTs
+and Suns, etc. which are "live" on the Internet, or through login
+accounts on Internet machines.  Gopher client programs would make a
+direct network connection to the Gopher server on the host with the
+desired information, anywhere on the Internet, anywhere in the world.
+ 
+Thanks to the GopherMail program, most of the resources of Gopher are
+now available to everyone with email-only access to the Internet.  One
+estimate says that there are more than 10 million people who are off
+the Internet, but can reach it with email.  Wow.
+ 
+ 
+Getting Started
+
+You can get started by sending mail to gopher@calvin.edu with any or no 
+subject and any or no message body. GopherMail will reply by sending you 
+it's main gopher menu. You then use your email program to reply to that 
+message, including it in the text of your reply. Mark which menu options 
+you want to follow-up by putting an "X" (or "x") anywhere near the 
+beginning of the line, before the menu numbers for those options. 
+
+From there you can just keep repeating the process, sending replies back to 
+gopher with the desired items marked with an X. To make it more efficient, 
+you could edit your replies so they contain just the gopher link infor- 
+mation for the items that you want. You'll find all the link information 
+after the menu, at the bottom of the menu messages that GopherMail sends to 
+you. Some items on gopher menus are database searches and college phone 
+books. To search for a particular name or keyword(s), you simply send them 
+on the "Subject:" line of the message in which you've Xed the phonebook or 
+WAIS database menu option. 
+ 
+ 
+Options 
+
+GopherMail's options include:
+  - Message splitting after a certain file size
+  - Menu splitting after a certain number of menu items
+  - Re-using links saved in a "Bookmarks" file
+  - Requesting the Gopher menu for a specific hostname
+  - Requesting this help file
+  - Selecting menu items using fewer keystrokes
+  - Requesting items from the Info-Mac Archive
+  - Requesting gopher items with their raw link information
+
+Since many email gateways have size limits on email messages, it's possible 
+to split GopherMail output into several messages when it exceeds a certain 
+size. This can be done by specifying a maximum number of menu items to send 
+in one message, or by specifying a maximum size in bytes for text, HQX, 
+binary and sound files. There are a couple of ways to do this. The first 
+way is to put "Menu=50" and/or "Split=30000" (for example) in the 
+"Subject:" of your message when requesting gopher menus and/or files. This 
+would limit the output to 50 menu items per message, and would send files 
+in messages of approximately 30,000 bytes each, maximum. 
+
+The other way is to include these same instructions in the body of the 
+message, on separate lines. For example:
+
+Split=25K  You may have text after the "25K".  The "K" or "k" becomes "000".
+Menu=75    Yes, I know 1K = 1024, but it was easier to write this way.
+
+Lines like these already appear in menu messages, you can find them after 
+the menu items and before the link information. They contain the default 
+values. You should edit these lines to contain the values that you want. 
+All subsequent menus will contain your preferred "Menu=" and "Split=" 
+values. Setting these values to 0 (zero) has the effect of not splitting 
+messages at all. The default is to split menus after 100 items, and files 
+after 27,000 bytes.  If "Split=" or "Menu=" appear in the Subject: of
+the message, these will override the values set in the message body.
+
+You can specify a different host when requesting a top level gopher
+menu by placing a fully qualified domain name as the "Subject:" of your
+message (such as gopher.micro.umn.edu).  You can also specify a port
+other than the default of 70 by placing it after a fully qualified
+domain name in the subject (e.g. darth.sdsc.edu 800).
+
+The most efficient way to use GopherMail is to mail just the link
+information for one or several gopher items.  You can build a type of
+"bookmarks" file by saving the links that you want to use again.  If
+you mail just the link information for a gopher connection, GopherMail
+will follow the link and mail you the output.  Here's what you need:
+
+Name=About GopherMail   <- This is optional, it returns in the Subject:
+Type=0                  <- This is required, see below for a list of types.
+Port=70                 <- Port 70 is assumed, required only if different.
+Path=0/gophermail       <- This is usually required, depends on the link.
+Host=gopher.calvin.edu  <- Required.  This MUST be the last line of the link.
+
+Supported Types are:
+
+         0  -- Text File
+         1  -- Directory
+         2  -- CSO name server
+         4  -- Mac HQX file.
+         7  -- Full Text Index (these are often WAIS database searches)
+         9  -- Binary File
+         s  -- Sound
+         
+Binary and Sound Files are sent as uuencoded files.
+
+If you send the word "help" as the subject (no quotes), GopherMail
+will send you this help file.
+
+To save a few keystrokes, instead of putting X's in front of the menu
+lines, you could also just insert lines at the top of the reply which
+contain an "X" followed by the menu number that you want, such as:
+x3
+X15
+
+Macintosh Programs and other files uploaded to the Info-Mac Archives
+on Sumex at Stanford can be easily requested through GopherMail.  Just
+send mail to gopher with the complete "Archived as" line for each
+file, such as: [Archived as /info-mac/dir/file-name.hqx; 400K]
+GopherMail will recognize these as Info-Mac requests, and retrieve
+them from the gopher server on sumex-aim.stanford.edu.  Since mail
+programs like Eudora can automatically de-binhex only complete HQX
+files, the default for Info-Mac files is not to split them into parts.
+This can easily be overridden by supplying a "Split=" value on the
+Subject: line.
+
+GopherMail also recognizes gopher link information in "raw" form,
+which means tab-delimited on one line.  A typical link might look like:
+
+0About GopherMail#0/gophermail#gopher.calvin.edu#70
+
+The "#" marks represent tab characters.  This may not seem very
+useful, but it allows you to copy a link from a program like GopherApp
+and paste it into a message to gopher for processing by GopherMail.
+ 
+ 
+Why GopherMail?
+
+I was afraid that after leaving my job at Calvin in 1993, I might not
+be able to get an account which has direct "live" access to the
+Internet, and therefore have no more cool gopher access.  I expect
+that no matter where I live, I'll manage to at least find a service
+(free, cheap, or commercial) that will let me send email to Internet
+addresses.  My GopherMail program lives on an Internet computer, such
+as this Sun at Calvin where it started, or the computers at U of Minn,
+or maybe someday on every gopher server on the net, and it accepts
+email requests from anyone, on or off the Internet.  It makes the
+gopher connections on the Internet, then it emails the results back to
+the person who requested them, to whatever their email address is.
+ 
+ 
+Credits
+
+GopherMail was written in Perl by Fred Bremmer in September 1992.
+Nick Hengeveld helped with the TCP portion, and Matt Ranney provided
+the book on Perl and helped with some regular expressions.  Several
+friends helped to find bugs and suggest improvements.
+
+For help, to report bugs, or for more information, send email to
+gophermail-admin@calvin.edu

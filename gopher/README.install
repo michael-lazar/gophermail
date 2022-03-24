@@ -1,0 +1,43 @@
+Installation instructions for GopherMail
+
+1. Create a user with the ID "gopher" on your system.  Here's what
+   mine looks like:
+
+gopher:*:100:100:GopherMail Server:/home/gopher:/usr/calvin/bin/tcsh
+
+2. Create a couple of aliases in /etc/aliases to make things easier:
+
+gophermail-admin:fredb (change this, of course)
+gophermail:gopher (this just lets people use either address)
+
+   Don't forget to run "newaliases".
+
+3. Make the home directory (in my case /home/gopher) and make sure it
+   contains the following three files:
+
+-rw-------  1 gopher         27 Oct 13 01:31 .forward
+-rwxrwx---  1 gopher      15519 Oct 25 15:21 gophermail*
+-rwx------  1 gopher        346 Oct 25 15:28 gophermail.maint*
+
+4. The .forward file should consist of the following line:
+
+"|/home/gopher/gophermail"
+
+5. Create a crontab file for the new gopher account by executing the
+   command "crontab -e gopher" (as root).  The crontab file should
+   contain the following line:
+
+15 3 * * * /home/gopher/gophermail.maint > /dev/null
+
+   This will execute the gophermail.maint program every day at 3:15am.
+
+6. Customize the variables at the top of the gophermail program.
+
+7. Set up the gophermail helpfile as a text file with a title such as 
+   "About GopherMail" on your gopher server.  Replace "calvin.edu"
+   with your address in the following lines of that file:
+
+You can get started by sending mail to gopher@calvin.edu with any or no
+Host=gopher.calvin.edu  <- Required.  This MUST be the last line of the link.
+0About GopherMail#0/gophermail#gopher.calvin.edu#70
+gophermail-admin@calvin.edu
